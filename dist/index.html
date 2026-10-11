@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#020b10">
+  <title>NEXUS · Reloj orbital</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="universe">
+    <div class="city" aria-hidden="true"></div>
+    <svg class="corner-ring" viewBox="0 0 120 120" preserveAspectRatio="none" aria-hidden="true">
+      <circle cx="60" cy="60" r="55" fill="#01090e"/>
+      <g fill="none" stroke="#23cbea">
+        <circle cx="60" cy="60" r="53" stroke-opacity=".45"/>
+        <circle cx="60" cy="60" r="36" stroke-opacity=".6"/>
+        <circle cx="60" cy="60" r="23" stroke-opacity=".25"/>
+        <g class="ring-outer"><circle cx="60" cy="60" r="51" stroke-width="3" stroke-dasharray="40 12 4 12"/><path d="M60 3v8M117 60h-8M60 117v-8M3 60h8" stroke-width="3"/></g>
+        <g class="ring-inner"><circle cx="60" cy="60" r="42" stroke="#ff9a35" stroke-width="4" stroke-dasharray="62 70"/><circle cx="60" cy="60" r="46" stroke-width="2" stroke-dasharray="82 62"/></g>
+        <circle cx="60" cy="60" r="3" stroke-width="2"/>
+      </g>
+    </svg>
+    <svg class="corner-globe" viewBox="0 0 120 120" preserveAspectRatio="none" aria-hidden="true">
+      <defs><clipPath id="globe-clip"><circle cx="60" cy="60" r="53"/></clipPath><radialGradient id="globe-fill"><stop stop-color="#042333"/><stop offset="1" stop-color="#01090e"/></radialGradient></defs>
+      <circle cx="60" cy="60" r="59" fill="#01090e"/>
+      <circle cx="60" cy="60" r="53" fill="url(#globe-fill)" stroke="#27b9e4" stroke-width="1.2"/>
+      <g clip-path="url(#globe-clip)" fill="none" stroke="#23b8e6" stroke-width=".8">
+        <ellipse cx="60" cy="60" rx="53" ry="13"/><ellipse cx="60" cy="38" rx="49" ry="12"/><ellipse cx="60" cy="82" rx="49" ry="12"/><ellipse cx="60" cy="19" rx="34" ry="7"/><ellipse cx="60" cy="101" rx="34" ry="7"/>
+        <ellipse class="meridian meridian-one" cx="60" cy="60" rx="52" ry="53"/><ellipse class="meridian meridian-two" cx="60" cy="60" rx="52" ry="53"/><ellipse class="meridian meridian-three" cx="60" cy="60" rx="52" ry="53"/><ellipse class="meridian meridian-four" cx="60" cy="60" rx="52" ry="53"/>
+        <path d="M7 60h106M60 7v106" stroke-opacity=".4"/>
+      </g>
+    </svg>
+    <svg class="corner-radar" viewBox="0 0 120 120" preserveAspectRatio="none" aria-hidden="true">
+      <circle cx="60" cy="60" r="57" fill="#01090e"/>
+      <g fill="none" stroke="#21ccef">
+        <circle cx="60" cy="60" r="36" stroke-opacity=".6"/>
+        <g class="radar-ticks"><circle cx="60" cy="60" r="53" stroke-width="3" stroke-dasharray="2 10"/><path d="M60 20v7M100 60h-7M60 100v-7M20 60h7" stroke-width="2"/></g>
+        <g class="radar-sweep"><path d="M60 60L60 25A35 35 0 0 1 95 60Z" fill="#24d9ff" fill-opacity=".1" stroke="none"/><path d="M60 60V25" stroke-opacity=".8"/><circle cx="60" cy="60" r="40" stroke-dasharray="34 217" stroke-width="2"/></g>
+        <circle class="radar-core" cx="60" cy="60" r="3" stroke-width="2"/>
+      </g>
+    </svg>
+    <svg class="corner-telemetry" viewBox="0 0 270 82" preserveAspectRatio="none" aria-hidden="true">
+      <rect width="270" height="82" fill="#01090e"/>
+      <path d="M7 72h166" stroke="#35d9ff" stroke-dasharray="6 5"/>
+      <g fill="#082430"><path d="M10 70V22h6v48M28 70V8h6v62M46 70V17h6v53M64 70V3h6v67M82 70V13h6v57M100 70V7h6v63M118 70V20h6v50M136 70V9h6v61M154 70V14h6v56"/></g>
+      <g fill="#42dfff" class="telemetry-bars">
+        <rect x="10" y="22" width="6" height="48" style="--delay:-.2s;--speed:2.1s"/>
+        <rect x="28" y="8" width="6" height="62" style="--delay:-1.1s;--speed:2.7s"/>
+        <rect x="46" y="17" width="6" height="53" style="--delay:-.7s;--speed:1.8s"/>
+        <rect x="64" y="3" width="6" height="67" style="--delay:-1.8s;--speed:3.1s"/>
+        <rect x="82" y="13" width="6" height="57" style="--delay:-.4s;--speed:2.3s"/>
+        <rect x="100" y="7" width="6" height="63" style="--delay:-1.4s;--speed:2.9s"/>
+        <rect x="118" y="20" width="6" height="50" style="--delay:-.9s;--speed:1.9s"/>
+        <rect x="136" y="9" width="6" height="61" style="--delay:-2.1s;--speed:2.6s"/>
+        <rect x="154" y="14" width="6" height="56" style="--delay:-.5s;--speed:2.2s"/>
+      </g>
+      <g class="telemetry-cells" fill="#062330" stroke="#42dfff" stroke-width="1.5">
+        <path d="M224 8l15 9v18l-15 9-15-9V17Z"/>
+        <path d="M208 38l15 9v18l-15 9-15-9V47Z"/>
+        <path d="M240 38l15 9v18l-15 9-15-9V47Z"/>
+      </g>
+    </svg>
+    <canvas id="particles" aria-hidden="true"></canvas>
+    <div class="scanlines" aria-hidden="true"></div>
+    <header><a class="brand" href="./index.html">N<span>Ξ</span>XUS <small>ORBITAL CLOCK / 01</small></a><span class="status"><i></i> SISTEMA EN LÍNEA</span></header>
+    <div class="orbit orbit-one" aria-hidden="true"></div>
+    <div class="orbit orbit-two" aria-hidden="true"></div>
+    <section class="clock-panel" aria-label="Reloj local">
+      <div class="eyebrow"><span></span> TIEMPO LOCAL <span></span></div>
+      <div id="clock" role="timer" aria-live="off" aria-label="Hora actual"></div>
+      <div class="clock-detail"><span id="date"></span><span id="period"></span></div>
+    </section>
+    <div class="coordinate"><span>ESTACIÓN TEMPORAL</span><strong id="zone"></strong><div class="signal"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
+    <div class="day-cycle"><span>PROGRESO DEL DÍA <strong id="progress-label"></strong></span><div><i id="progress"></i></div></div>
+    <footer><span class="footer-note">EL FUTURO ES AHORA<span class="tiny">HORA SINCRONIZADA CON TU DISPOSITIVO</span></span><nav aria-label="Controles del reloj"><button id="format" aria-label="Cambiar a formato de 12 horas">24 H</button><button id="motion" aria-pressed="true">◌ <span>Animación</span></button><button id="fullscreen">⛶ <span>Pantalla completa</span></button></nav></footer>
+    <p id="message" role="status"></p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
